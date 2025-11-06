@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejemplos de estilo</title>
+    <style>
+        #ultimoParrafo{
+            background-color: beige;
+            
+        }
+        p { 
+            color:green;
+            background-color: aqua;
+            font-size: 22px;
+        }
+        p, span {font-family: 'Times New Roman', Times, serif;}
+
+    </style>
+</head>
+<body>
+      
+<p style="color: red;">
+    HTML, siglas de <span style="text-decoration: line-through; font-size: 30px;">HyperText Markup Language</span> (Lenguaje de Marcado de Hipertexto), es el lenguaje estándar para estructurar el contenido de las páginas web. Define el contenido como texto, imágenes, enlaces y otros elementos usando un sistema de etiquetas que le dicen al navegador cómo organizarlos y presentarlos al usuario. 
+</p>
+<p>
+    CSS, o Hojas de Estilo en Cascada, es un lenguaje de estilos que define la apariencia de los documentos HTML, como el color, la fuente, el tamaño, la posición y el diseño de una página web. Separa la estructura del contenido (HTML) de su presentación, lo que permite a los desarrolladores y diseñadores crear sitios web visualmente atractivos y consistentes, facilitando el mantenimiento y la flexibilidad del diseño. 
+</p>
+<p id="ultimoParrafo" style="border: 5px solid red; background-color: blueviolet;">
+    HTML, siglas de HyperText Markup Language (Lenguaje de Marcado de Hipertexto), es el lenguaje estándar para estructurar el contenido de las páginas web. Define el contenido como texto, imágenes, enlaces y otros elementos usando un sistema de etiquetas que le dicen al navegador cómo organizarlos y presentarlos al usuario. 
+</p>
+<!-- Traductor de Google -->
+  <div id="google_translate_element" style="float: right; margin: 10px;"></div>
+
+  <!-- Calendario de Google -->
+  <h2>Mi Calendario</h2>
+  <iframe src="https://calendar.google.com/calendar/embed?src=tu_calendario%40gmail.com&ctz=America%2FMexico_City"
+    style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'es'}, 'google_translate_element');
+    }
+  </script>
+
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
