@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina principal</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <div class="calculadora">
+    <div id="pantalla" class="pantalla">0</div>
+    <div class="botones">
+      <button onclick="limpiar()">C</button>
+      <button onclick="borrar()">←</button>
+      <button onclick="insertar('%')">%</button>
+      <button class="operador" onclick="insertar('/')">÷</button>
+
+      <button onclick="insertar('7')">7</button>
+      <button onclick="insertar('8')">8</button>
+      <button onclick="insertar('9')">9</button>
+      <button class="operador" onclick="insertar('*')">×</button>
+
+      <button onclick="insertar('4')">4</button>
+      <button onclick="insertar('5')">5</button>
+      <button onclick="insertar('6')">6</button>
+      <button class="operador" onclick="insertar('-')">−</button>
+
+      <button onclick="insertar('1')">1</button>
+      <button onclick="insertar('2')">2</button>
+      <button onclick="insertar('3')">3</button>
+      <button class="operador" onclick="insertar('+')">+</button>
+
+      <button onclick="insertar('0')">0</button>
+      <button onclick="insertar('.')">.</button>
+      <button style="grid-column: span 2;" class="operador" onclick="calcular()">=</button>
+    </div>
+  </div>
+
+  <script>
+    let pantalla = document.getElementById("pantalla");
+
+    function insertar(valor) {
+      if (pantalla.innerText === "0") {
+        pantalla.innerText = valor;
+      } else {
+        pantalla.innerText += valor;
+      }
+    }
+
+    function limpiar() {
+      pantalla.innerText = "0";
+    }
+
+    function borrar() {
+      if (pantalla.innerText.length > 1) {
+        pantalla.innerText = pantalla.innerText.slice(0, -1);
+      } else {
+        pantalla.innerText = "0";
+      }
+    }
+
+    function calcular() {
+      try {
+        pantalla.innerText = eval(pantalla.innerText);
+      } catch {
+        pantalla.innerText = "Error";
+      }
+    }
+  </script>
+
+
+    <a href="img/imagen1.jpg">imagen 1</a>
+    <a href="tutor/tutorial1.mp4">Ver video</a>
+    <img src="img/imagen1.jpg" alt="gato">
+    <video width="320" height="240" controls>
+        <source src="tutor/tutorial1.mp4" type="video/mp4">
+    </video>
+    
+
+</body>
+
+</html>
