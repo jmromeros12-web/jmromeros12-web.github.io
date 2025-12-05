@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios javascript</title>
+
+    <style>
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        /*Estilos de los botones*/
+        .button {
+            width: 150px;
+            padding: 0;
+            border: none;
+            transform: rotate(5deg);
+            transform-origin: center;
+            font-family: "Gochi Hand", cursive;
+            text-decoration: none;
+            font-size: 15px;
+            cursor: pointer;
+            padding-bottom: 3px;
+            border-radius: 5px;
+            box-shadow: 0 2px 0 #494a4b;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background-color: #bebebe;
+        }
+
+        .button span {
+            background: #f1f5f8;
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            border: 2px solid #494a4b;
+        }
+
+        .button:active {
+            transform: translateY(5px);
+            padding-bottom: 0px;
+            outline: 0;
+        }
+        /*Clases*/
+
+        .clase-coleccion {
+            color: red;
+            background-color: pink;
+            font-size: 18px;
+        }
+        .parrafo1 {
+            color: yellow;
+            font-style: oblique;
+        }
+    </style>
+</head>
+<body>
+   <h2>What Can JavaScript Do?</h2>
+
+<p id="demo">JavaScript can change HTML content.</p>
+
+<button type="button" onclick='document.getElementById("demo").innerHTML = "Hoy haremos ejercicios de JavaScript!"'>Click Me!</button>
+
+<!--Botones para Imagenes de emociones-->
+
+<button class="button" onclick="document.getElementById('img').src='imagenes/contento.jpg'">alegre</button>
+
+<img id="img" src="imagenes/normal.jpg" style="width:100px">
+
+
+<button  class="button" onclick="document.getElementById('img').src='imagenes/pena.jpg'">triste</button>
+
+<!---Boton luna-->
+<button onclick="document.body.style.backgroundColor = 'rgb(57, 57, 57)'; document.body.style.color = 'white';">
+<img id="luna" class="tamaño-temas" alt="luna" src="imagenes/luna.jpg">
+</button>
+
+<!---Boton sol-->
+<button onclick="document.body.style.backgroundColor = 'white'; document.body.style.color = 'black';">
+<img id="sol" class="tamaño-temas" alt="sol" src="imagenes/sol.jpg">
+</button>
+
+<!---
+<button id="arbol-apa" onclick="document.getElementById('arbol-apa').style.display='none'; document.getElementById('arbol-desa').style.display='block'; document.getElementById('arbol-img').style.display='block';">Aparecer arbol</button>
+
+<img id="arbol-img" src="imagenes/arbol.png" style="width:100px; display:none;">
+
+
+<button id="arbol-desa" onclick="document.getElementById('arbol-desa').style.display='none'; document.getElementById('arbol-apa').style.display='block'; document.getElementById('arbol-img').style.display='none';">Quitar arbol</button>
+-->
+
+<!--En lugar de ocultar con hidden, quiero hacerlo con display-->
+<p class="parrafo1">Aqui hay un arbol</p>
+
+<img id="arbol-img" src="imagenes/arbol.png" style="width:100px; display:none;">
+
+<button onclick="document.getElementById('arbol-img').style.display = 'none';"> Quitar árbol </button>
+
+<button onclick="document.getElementById('arbol-img').style.display = 'block';"> Mostrar árbol </button>
+
+
+<p>El DOM (Document Object Model) es la representación en forma de árbol de una página web, donde cada etiqueta HTML es un objeto en ese árbol. Las etiquetas son los bloques de construcción de HTML, como  &lt;html&gt;,  &lt;head&gt; y  &lt;body&gt;, que se anidan para formar la estructura jerárquica del documento. El DOM es fundamental porque permite a lenguajes como JavaScript interactuar con la página, modificando su contenido, estructura y estilo.&lt;&gt;</p>
+
+<!--Boton de texto verde-->
+
+<button onclick="
+
+    
+    /*document.getElementsByTagName('p')[0].style.color='green';
+    document.getElementsByTagName('p')[0].style.fontSize='20px';
+    document.getElementsByTagName('p')[0].style.fontWeight='bold'; /*negrita, CSS: font-weight: bold; 
+    document.getElementsByTagName('p')[0].style.fontStyle='italic'; /*cursiva, CSS: font-style: italic; */ 
+
+    /*declaro la constante parrfo0*/
+    const parrafo0 =  document.getElementsByTagName('p')[0];
+    parrafo0.style.color='green';
+    parrafo0.style.fontSize='20px';
+    parrafo0.style.fontWeight='bold';
+    parrafo0.style.fontStyle='italic';
+
+    /*aplica estilos a una clase, eliminando las clases anteriores
+    document.getElementsByTagName('p')[1].className='clase-coleccion';*/
+
+    document.getElementsByTagName('p')[1].classList.add('clase-coleccion')
+"> Cambia el primer párrafo </button>
+
+<!--Boton de texto azul-->
+
+<p id="parrafo-a-cambiar">Este es el párrafo cuyo aspecto cambiará.</p>
+
+<button onclick="cambiarEstilosGlobales()">Cambia el aspecto de todos los párrafos</button>
+
+<script>
+function cambiarEstilosGlobales() {
+// Selecciona TODOS los elementos <p> y los guarda en una lista (NodeList)
+const parrafos = document.querySelectorAll('p');
+
+// Itera sobre cada elemento individualmente para aplicar los estilos
+parrafos.forEach(parrafo => {
+parrafo.style.color = 'blue';
+parrafo.style.fontSize = '15px';
+parrafo.style.fontWeight = 'bold';
+parrafo.style.fontStyle = 'italic';
+});
+}
+</script>
+
+</body>
+</html>
