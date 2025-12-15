@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Científica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .calculator {
+            background-color: #333;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            width: 320px;
+        }
+        .display {
+            background-color: #222;
+            color: #fff;
+            font-size: 24px;
+            text-align: right;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            min-height: 40px;
+            overflow: hidden;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+        button {
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        .number {
+            background-color: #666;
+            color: #fff;
+        }
+        .operator {
+            background-color: #ff9500;
+            color: #fff;
+        }
+        .function {
+            background-color: #a6a6a6;
+            color: #000;
+        }
+        .equals {
+            background-color: #ff9500;
+            color: #fff;
+            grid-column: span 2;
+        }
+        .clear {
+            background-color: #a6a6a6;
+            color: #000;
+        }
+        .zero {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+            <button class="function" onclick="clearDisplay()">C</button>
+            <button class="function" onclick="backspace()">⌫</button>
+            <button class="function" onclick="appendToDisplay('(')">(</button>
+            <button class="function" onclick="appendToDisplay(')')">)</button>
+            <button class="function" onclick="appendToDisplay('Math.sqrt(')">√</button>
+            <button class="number" onclick="appendToDisplay('7')">7</button>
+            <button class="number" onclick="appendToDisplay('8')">8</button>
+            <button class="number" onclick="appendToDisplay('9')">9</button>
+            <button class="operator" onclick="appendToDisplay('/')">÷</button>
+            <button class="function" onclick="appendToDisplay('Math.sin(')">sin</button>
+            <button class="number" onclick="appendToDisplay('4')">4</button>
+            <button class="number" onclick="appendToDisplay('5')">5</button>
+            <button class="number" onclick="appendToDisplay('6')">6</button>
+            <button class="operator" onclick="appendToDisplay('*')">×</button>
+            <button class="function" onclick="appendToDisplay('Math.cos(')">cos</button>
+            <button class="number" onclick="appendToDisplay('1')">1</button>
+            <button class="number" onclick="appendToDisplay('2')">2</button>
+            <button class="number" onclick="appendToDisplay('3')">3</button>
+            <button class="operator" onclick="appendToDisplay('-')">-</button>
+            <button class="function" onclick="appendToDisplay('Math.tan(')">tan</button>
+            <button class="number zero" onclick="appendToDisplay('0')">0</button>
+            <button class="number" onclick="appendToDisplay('.')">.</button>
+            <button class="operator" onclick="appendToDisplay('+')">+</button>
+            <button class="function" onclick="appendToDisplay('Math.log(')">log</button>
+            <button class="equals" onclick="calculate()">=</button>
+            <button class="function" onclick="appendToDisplay('Math.PI')">π</button>
+            <button class="function" onclick="appendToDisplay('Math.E')">e</button>
+            <button class="function" onclick="appendToDisplay('**')">^</button>
+            <button class="function" onclick="appendToDisplay('Math.exp(')">exp</button>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+        let currentInput = '';
+
+        function appendToDisplay(value) {
+            if (display.textContent === '0' && value !== '.') {
+                display.textContent = value;
+            } else {
+                display.textContent += value;
+            }
+            currentInput += value;
+        }
+
+        function clearDisplay() {
+            display.textContent = '0';
+            currentInput = '';
+        }
+
+        function backspace() {
+            if (display.textContent.length > 1) {
+                display.textContent = display.textContent.slice(0, -1);
+                currentInput = currentInput.slice(0, -1);
+            } else {
+                display.textContent = '0';
+                currentInput = '';
+            }
+        }
+
+        function calculate() {
+            try {
+                let result = eval(currentInput);
+                display.textContent = result;
+                currentInput = result.toString();
+            } catch (error) {
+                display.textContent = 'Error';
+                currentInput = '';
+            }
+        }
+    </script>
+</body>
+</html>
