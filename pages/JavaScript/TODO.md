@@ -1,2 +1,0 @@
-- [ ] Add id="myImage" to the img tag in index.html
-- [ ] Change the onclick of the "Turn on the light" button to set src='imagenes/alegre.jpg'
