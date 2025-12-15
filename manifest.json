@@ -1,0 +1,71 @@
+{
+  "name": "Etiquetas - IES Donoso Cortés",
+  "short_name": "IES Donoso Cortés",
+  "description": "Página web oficial del Instituto de Educación Secundaria Donoso Cortés. Centro educativo público situado en Don Benito, Badajoz que ofrece formación en ESO, Bachillerato y Ciclos Formativos.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#1e40af",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "es",
+  "categories": ["education", "school", "government"],
+  "icons": [
+    {
+      "src": "/IDC.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+
+  "shortcuts": [
+    {
+      "name": "Horario Escolar",
+      "short_name": "Horario",
+      "description": "Consultar el horario escolar",
+      "url": "pages/Horario-lista escolar.html",
+      "icons": [
+        {
+          "src": "/IDC.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Formulario",
+      "short_name": "Formulario",
+      "description": "Acceder al formulario de contacto",
+      "url": "pages/formulario/formulario.html",
+      "icons": [
+        {
+          "src": "/IDC.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "JavaScript",
+      "short_name": "JavaScript",
+      "description": "Ver demostraciones de JavaScript",
+      "url": "javascript/index.html",
+      "icons": [
+        {
+          "src": "/IDC.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/IDC.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Página principal del IES Donoso Cortés"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
