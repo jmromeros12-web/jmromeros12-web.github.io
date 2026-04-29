@@ -15,12 +15,18 @@
     //console.log("ok");
 //}())
 
-let hasPizza = true; 
+//let hasPizza = true; 
 
-if (hasPizza == false) {
-    console.log("No hay pizza");
-} else if (hasPizza == true) {
-    console.log("Hay pizza");
-} else {
-    console.log(hasPizza);
+//if (hasPizza == false) {
+    //console.log("No hay pizza");
+//} else if (hasPizza == true) {
+    //console.log("Hay pizza");
+//} else {
+    //console.log(hasPizza);
+//}
+
+
+let year = false;
+if (year != true) {
+    console.log("Ok");
 }
