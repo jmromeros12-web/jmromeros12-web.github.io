@@ -11,6 +11,16 @@
 
 //console.log(result("Armando", 2026, formatter));
 
-(function(){
-    console.log("ok");
-}());
+//(function(){
+    //console.log("ok");
+//}())
+
+let hasPizza = true; 
+
+if (hasPizza == false) {
+    console.log("No hay pizza");
+} else if (hasPizza == true) {
+    console.log("Hay pizza");
+} else {
+    console.log(hasPizza);
+}
