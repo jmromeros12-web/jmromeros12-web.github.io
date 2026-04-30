@@ -26,7 +26,21 @@
 //}
 
 
-let year = false;
-if (year != true) {
-    console.log("Ok");
+//let year = false;
+//if (year != true) {
+    //console.log("Ok");
+//}
+
+let company = "Openwebinars";
+const year = 2023;
+
+function getAcademyInfo() {
+    let format = "From" + company; 
+
+    if (!year) {
+        let fortat = "Made in" + company;
+        return fortat;
+    }
+    return format + "in" + year;
+
 }
