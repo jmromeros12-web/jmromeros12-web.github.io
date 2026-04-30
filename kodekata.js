@@ -31,16 +31,26 @@
     //console.log("Ok");
 //}
 
-let company = "Openwebinars";
-const year = 2023;
+//let company = "Openwebinars";
+//const year = 2023;
 
-function getAcademyInfo() {
-    let format = "From" + company; 
+//f//unction getAcademyInfo() {
+    //let format = "From" + company; 
 
-    if (!year) {
-        let fortat = "Made in" + company;
-        return fortat;
-    }
-    return format + "in" + year;
+    //if (!year) {
+        //let fortat = "Made in" + company;
+       // //return fortat;
+    //}
+    //return format + "in" + year;
 
+//}
+
+
+
+let name = "Jose";
+
+if (true) {
+    let text = "Un texto cualquiera";
 }
+
+console.log(text);
