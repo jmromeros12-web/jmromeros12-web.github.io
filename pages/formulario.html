@@ -247,23 +247,52 @@
         <button type="submit">Enviar</button>
         </br>
 
+        <button type="button" id="mostrar-datos">Mostrar datos</button>
+
         <script>
             const form = document.getElementById("contacto");
+            const btnMostrar = document.getElementById("mostrar-datos");
+
+            function getFormData() {
+                return {
+                    nombre: form.nombre?.value ?? "",
+                    email: form.email?.value ?? "",
+                    // en algunos inputs no se crearon los name antes; los cogemos por selector
+                    password: form.querySelector('input[type="password"]')?.value ?? "",
+                    telefono: form.querySelector('input[type="tel"]')?.value ?? "",
+                    edad: form.querySelector('input[type="number"]')?.value ?? "",
+                    fecha: form.querySelector('input[type="datetime-local"]')?.value ?? "",
+                    pais: form.pais?.value ?? "",
+                    genero: form.genero?.value ?? "",
+                };
+            }
+
+
             form.addEventListener("submit", (e) => {
                 e.preventDefault();
                 const nombre = form.nombre.value;
-                const email = form.email.value;
-                
-                // Mostrar el nombre en una alerta
                 alert("¡Hola " + nombre + "!");
-                
-                // También puedes mostrar información adicional si lo deseas
                 console.log("Nombre:", nombre);
-                console.log("Email:", email);
+                console.log("Email:", form.email.value);
+            });
+
+            btnMostrar.addEventListener("click", () => {
+                const data = getFormData();
+                const msg = [
+                    `Nombre: ${data.nombre}`,
+                    `Email: ${data.email}`,
+                    `Contraseña: ${data.password}`,
+                    `Teléfono: ${data.telefono}`,
+                    `Edad: ${data.edad}`,
+                    `Fecha y hora: ${data.fecha}`,
+                    `País: ${data.pais}`,
+                    `Género: ${data.genero}`,
+                ].join("\n");
+
+                alert(msg);
             });
         </script>
 
-        
     </form>
     <button type="button" onclick="alert('Hola')">Saludo</button>
     <button type="button" onclick="document.write">Right</button> 
