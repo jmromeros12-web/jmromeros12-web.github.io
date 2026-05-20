@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClickPC — Plan de Empresa</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --bg2: #0f1520;
+    --card: #131b28;
+    --border: #1e2d45;
+    --accent: #00d4aa;
+    --accent2: #0090ff;
+    --accent3: #ff6b35;
+    --text: #e8edf5;
+    --muted: #6b7fa3;
+    --heading: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,14,20,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--heading);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo span {
+    color: var(--accent);
+  }
+  .nav-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+  .nav-links {
+    display: flex; gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 40%, rgba(0,212,170,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(0,144,255,0.06) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(30,45,69,0.3) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,45,69,0.3) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+  .hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,212,170,0.1);
+    border: 1px solid rgba(0,212,170,0.3);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.95;
+    color: var(--heading);
+    margin-bottom: 8px;
+  }
+  .hero h1 .highlight {
+    color: var(--accent);
+    display: block;
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--muted);
+    max-width: 540px;
+    margin: 28px 0 48px;
+    line-height: 1.6;
+  }
+  .hero-stats {
+    display: flex; gap: 48px; flex-wrap: wrap;
+  }
+  .stat {
+    display: flex; flex-direction: column;
+  }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--heading);
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .hero-card {
+    position: absolute;
+    right: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 340px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    display: none;
+  }
+  @media (min-width: 1100px) { .hero-card { display: block; } }
+  .hero-card-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    color: var(--heading);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .profile-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .profile-item:last-child { border-bottom: none; }
+  .profile-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .profile-icon.green { background: rgba(0,212,170,0.15); }
+  .profile-icon.blue { background: rgba(0,144,255,0.15); }
+  .profile-icon.orange { background: rgba(255,107,53,0.15); }
+  .profile-text strong {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--heading);
+  }
+  .profile-text span {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 40px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before {
+    content: '';
+    width: 32px; height: 1px;
+    background: var(--accent);
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--heading);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .section-desc {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin-bottom: 60px;
+    line-height: 1.7;
+  }
+
+  /* SERVICES GRID */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .service-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .service-card:hover {
+    border-color: rgba(0,212,170,0.3);
+    transform: translateY(-4px);
+  }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+  }
+  .service-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--heading);
+    margin-bottom: 10px;
+  }
+  .service-desc { font-size: 0.88rem; color: var(--muted); }
+  .service-price {
+    margin-top: 16px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--accent);
+  }
+
+  /* MARKET */
+  #mercado { background: var(--bg2); }
+  .market-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (max-width: 768px) { .market-grid { grid-template-columns: 1fr; } }
+  .market-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .mstat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .mstat-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .mstat-label { font-size: 0.82rem; color: var(--muted); }
+  .mstat.wide { grid-column: span 2; }
+
+  /* DAFO */
+  .dafo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 768px) { .dafo-grid { grid-template-columns: 1fr; } }
+  .dafo-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .dafo-card::after {
+    content: attr(data-letter);
+    position: absolute;
+    right: 20px; top: 16px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 4rem;
+    opacity: 0.05;
+    line-height: 1;
+  }
+  .dafo-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 20px;
+  }
+  .dafo-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+  .dafo-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--heading);
+  }
+  .dafo-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .dafo-list li {
+    font-size: 0.88rem;
+    color: var(--muted);
+    display: flex; gap: 10px;
+    line-height: 1.5;
+  }
+  .dafo-list li::before {
+    content: '→';
+    color: inherit;
+    flex-shrink: 0;
+    opacity: 0.6;
+  }
+
+  /* PRICES */
+  #precios { background: var(--bg2); }
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .price-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+  .price-card:hover { border-color: rgba(0,144,255,0.4); }
+  .price-category {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .price-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--heading);
+    margin-bottom: 12px;
+  }
+  .price-amount {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--accent2);
+  }
+  .price-note { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+  .timeline-item {
+    position: relative;
+    padding-bottom: 40px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -37px; top: 4px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 4px rgba(0,212,170,0.15);
+  }
+  .timeline-phase {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .timeline-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--heading);
+    margin-bottom: 8px;
+  }
+  .timeline-desc { font-size: 0.88rem; color: var(--muted); }
+  .timeline-duration {
+    display: inline-block;
+    margin-top: 8px;
+    background: rgba(0,144,255,0.1);
+    border: 1px solid rgba(0,144,255,0.2);
+    border-radius: 100px;
+    padding: 2px 12px;
+    font-size: 0.75rem;
+    color: var(--accent2);
+  }
+
+  /* INVESTMENT */
+  .invest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .invest-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .invest-icon { font-size: 1.4rem; }
+  .invest-label { font-size: 0.85rem; color: var(--muted); }
+  .invest-amount {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    color: var(--heading);
+    font-size: 1.1rem;
+  }
+  .total-bar {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .total-label {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--heading);
+  }
+  .total-amount {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--accent);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    padding: 40px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--heading);
+    margin-bottom: 8px;
+  }
+  .footer-logo span { color: var(--accent); }
+  .footer-info { color: var(--muted); font-size: 0.85rem; }
+  .footer-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  .tag {
+    background: rgba(0,212,170,0.08);
+    border: 1px solid rgba(0,212,170,0.2);
+    border-radius: 100px;
+    padding: 4px 14px;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 80px 20px; }
+    .hero { padding: 100px 20px 60px; }
+    .hero-stats { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-dot"></div>
+    Click<span>PC</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#mercado">Mercado</a></li>
+    <li><a href="#dafo">DAFO</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#plan">Plan de Acción</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="nav-dot"></span>
+      Plan de Empresa · Villanueva de la Serena
+    </div>
+    <h1>
+      Tu PC.<br>
+      <span class="highlight">A medida.</span>
+    </h1>
+    <p class="hero-sub">
+      Tienda de informática especializada en Villanueva de la Serena. 
+      Montaje de PCs personalizados, reparación técnica y asesoramiento cercano para particulares, estudiantes y empresas.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">18</span>
+        <span class="stat-label">Años del promotor</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">+4</span>
+        <span class="stat-label">Líneas de servicio</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">6%</span>
+        <span class="stat-label">Crecimiento sector TIC</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">SL</span>
+        <span class="stat-label">Forma jurídica</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-title">Promotor</div>
+    <div class="profile-item">
+      <div class="profile-icon green">👤</div>
+      <div class="profile-text">
+        <strong>José Manuel Romero Sánchez</strong>
+        <span>Técnico SMR · Badajoz</span>
+      </div>
+    </div>
+    <div class="profile-item">
+      <div class="profile-icon blue">🎓</div>
+      <div class="profile-text">
+        <strong>Formación Técnica</strong>
+        <span>Sistemas Microinformáticos y Redes</span>
+      </div>
+    </div>
+    <div class="profile-item">
+      <div class="profile-icon orange">⚡</div>
+      <div class="profile-text">
+        <strong>Nivel Emprendedor</strong>
+        <span>Intermedio Avanzado · 4/6</span>
+      </div>
+    </div>
+    <div class="profile-item">
+      <div class="profile-icon green">📍</div>
+      <div class="profile-text">
+        <strong>Ubicación</strong>
+        <span>Villanueva de la Serena (Badajoz)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="container">
+    <div class="section-label">Catálogo</div>
+    <h2 class="section-title">Productos &amp; Servicios</h2>
+    <p class="section-desc">Una combinación de venta de hardware y servicios técnicos especializados para cubrir todas las necesidades informáticas del cliente.</p>
+
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">🖥️</div>
+        <div class="service-title">PC de Oficina / Estudio</div>
+        <div class="service-desc">Equipos ensamblados a medida, configurados con SSD y sistema operativo listo para usar.</div>
+        <div class="service-price">450 € – 600 €</div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">🎮</div>
+        <div class="service-title">PC Gaming</div>
+        <div class="service-desc">Configuraciones de alto rendimiento para juegos, con tarjetas gráficas y procesadores de gama alta.</div>
+        <div class="service-price">900 € – 1.500 €+</div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">🔧</div>
+        <div class="service-title">Reparación Técnica</div>
+        <div class="service-desc">Diagnóstico, sustitución de piezas, eliminación de virus y optimización de equipos en taller propio.</div>
+        <div class="service-price">Desde 15 €</div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">⚙️</div>
+        <div class="service-title">Mantenimiento</div>
+        <div class="service-desc">Formateo, instalación de sistemas operativos, limpieza y optimización del rendimiento del equipo.</div>
+        <div class="service-price">30 € – 60 €</div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">🧩</div>
+        <div class="service-title">Componentes</div>
+        <div class="service-desc">Venta de RAM, discos SSD, procesadores, placas base y tarjetas gráficas de marcas reconocidas.</div>
+        <div class="service-price">Precio de mercado</div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">🖱️</div>
+        <div class="service-title">Accesorios &amp; Periféricos</div>
+        <div class="service-desc">Teclados, ratones, cables HDMI/USB, pendrives, auriculares y adaptadores de uso cotidiano.</div>
+        <div class="service-price">3 € – 40 €</div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">💡</div>
+        <div class="service-title">Asesoramiento Técnico</div>
+        <div class="service-desc">Orientación personalizada para elegir el equipo adecuado según uso y presupuesto del cliente.</div>
+        <div class="service-price">Gratuito</div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">🏢</div>
+        <div class="service-title">Servicio a Empresas</div>
+        <div class="service-desc">Mantenimiento informático periódico, instalación de equipos y soporte técnico para pymes locales.</div>
+        <div class="service-price">A presupuesto</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MERCADO -->
+<section id="mercado">
+  <div class="container">
+    <div class="section-label">Análisis</div>
+    <h2 class="section-title">El Mercado</h2>
+    <div class="market-grid">
+      <div>
+        <p style="color:var(--muted); font-size:1rem; line-height:1.7; margin-bottom:28px;">
+          El sector TIC en España mueve más de 102.000 millones de euros al año con más de 33.000 empresas activas. La demanda de servicios técnicos y equipos personalizados crece de forma constante, especialmente en zonas medianas como Villanueva de la Serena, donde la oferta especializada es limitada.
+        </p>
+        <p style="color:var(--muted); font-size:1rem; line-height:1.7;">
+          La digitalización de pymes, el auge del teletrabajo y la necesidad de equipos para estudios online alimentan una demanda continua que las grandes plataformas online no pueden cubrir con atención personalizada.
+        </p>
+      </div>
+      <div class="market-stats fade-in">
+        <div class="mstat">
+          <div class="mstat-num">102K M€</div>
+          <div class="mstat-label">Mercado TIC España</div>
+        </div>
+        <div class="mstat">
+          <div class="mstat-num">+6–10%</div>
+          <div class="mstat-label">Crecimiento anual</div>
+        </div>
+        <div class="mstat">
+          <div class="mstat-num">26%</div>
+          <div class="mstat-label">PIB digital</div>
+        </div>
+        <div class="mstat">
+          <div class="mstat-num">4–7 años</div>
+          <div class="mstat-label">Ciclo renovación PC</div>
+        </div>
+        <div class="mstat wide">
+          <div class="mstat-num" style="color:var(--accent2)">Villanueva de la Serena</div>
+          <div class="mstat-label">Mercado local con poca oferta especializada · potencial comarcal sin explotar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAFO -->
+<section id="dafo">
+  <div class="container">
+    <div class="section-label">Diagnóstico</div>
+    <h2 class="section-title">Análisis DAFO</h2>
+    <p class="section-desc">Mapa estratégico completo del proyecto ClickPC.</p>
+
+    <div class="dafo-grid">
+      <div class="dafo-card fade-in" data-letter="F">
+        <div class="dafo-header">
+          <div class="dafo-dot" style="background:#00d4aa"></div>
+          <div class="dafo-title" style="color:#00d4aa">Fortalezas</div>
+        </div>
+        <ul class="dafo-list" style="--c:#00d4aa">
+          <li style="color:#7fcfbe">Conocimiento técnico sólido en hardware y software</li>
+          <li style="color:#7fcfbe">Servicio personalizado y trato cercano</li>
+          <li style="color:#7fcfbe">Flexibilidad como empresa pequeña</li>
+          <li style="color:#7fcfbe">Montaje de PCs a medida sin intermediarios</li>
+          <li style="color:#7fcfbe">Reparación rápida en taller propio</li>
+        </ul>
+      </div>
+
+      <div class="dafo-card fade-in" data-letter="O">
+        <div class="dafo-header">
+          <div class="dafo-dot" style="background:#0090ff"></div>
+          <div class="dafo-title" style="color:#0090ff">Oportunidades</div>
+        </div>
+        <ul class="dafo-list">
+          <li style="color:#7ab5e0">Creciente demanda de tecnología e informática</li>
+          <li style="color:#7ab5e0">Auge del teletrabajo y estudios online</li>
+          <li style="color:#7ab5e0">Falta de tiendas especializadas en la zona</li>
+          <li style="color:#7ab5e0">Potencial de servicios a empresas locales</li>
+          <li style="color:#7ab5e0">Avances tecnológicos que generan nuevas necesidades</li>
+        </ul>
+      </div>
+
+      <div class="dafo-card fade-in" data-letter="D">
+        <div class="dafo-header">
+          <div class="dafo-dot" style="background:#ff6b35"></div>
+          <div class="dafo-title" style="color:#ff6b35">Debilidades</div>
+        </div>
+        <ul class="dafo-list">
+          <li style="color:#d4956e">Recursos económicos iniciales limitados</li>
+          <li style="color:#d4956e">Alta dependencia del emprendedor al inicio</li>
+          <li style="color:#d4956e">Necesidad de actualización tecnológica constante</li>
+          <li style="color:#d4956e">Marca sin reconocimiento inicial en el mercado</li>
+          <li style="color:#d4956e">Capacidad de stock limitada</li>
+        </ul>
+      </div>
+
+      <div class="dafo-card fade-in" data-letter="A">
+        <div class="dafo-header">
+          <div class="dafo-dot" style="background:#e0497a"></div>
+          <div class="dafo-title" style="color:#e0497a">Amenazas</div>
+        </div>
+        <ul class="dafo-list">
+          <li style="color:#c47a94">Competencia de Amazon, PcComponentes, etc.</li>
+          <li style="color:#c47a94">Cambios tecnológicos rápidos</li>
+          <li style="color:#c47a94">Posibles bajadas de precios en el mercado</li>
+          <li style="color:#c47a94">Dependencia de proveedores externos</li>
+          <li style="color:#c47a94">Riesgo de obsolescencia del stock</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section id="precios">
+  <div class="container">
+    <div class="section-label">Tarifas</div>
+    <h2 class="section-title">Precios Estimados</h2>
+    <p class="section-desc">Política de precios competitivos con valor añadido en atención y personalización.</p>
+
+    <div class="price-grid">
+      <div class="price-card fade-in">
+        <div class="price-category">PC Oficina</div>
+        <div class="price-name">PC Básico</div>
+        <div class="price-amount">450–600€</div>
+        <div class="price-note">Estudio / trabajo diario</div>
+      </div>
+      <div class="price-card fade-in">
+        <div class="price-category">PC Uso General</div>
+        <div class="price-name">PC Intermedio</div>
+        <div class="price-amount">600–900€</div>
+        <div class="price-note">Familia / Autónomo</div>
+      </div>
+      <div class="price-card fade-in">
+        <div class="price-category">PC Gaming</div>
+        <div class="price-name">PC Alto Rendimiento</div>
+        <div class="price-amount">900–1500€+</div>
+        <div class="price-note">Gaming / Diseño</div>
+      </div>
+      <div class="price-card fade-in">
+        <div class="price-category">Servicio</div>
+        <div class="price-name">Diagnóstico</div>
+        <div class="price-amount">15–25€</div>
+        <div class="price-note">Análisis de averías</div>
+      </div>
+      <div class="price-card fade-in">
+        <div class="price-category">Servicio</div>
+        <div class="price-name">Formateo + SO</div>
+        <div class="price-amount">40–60€</div>
+        <div class="price-note">Windows o Linux</div>
+      </div>
+      <div class="price-card fade-in">
+        <div class="price-category">Servicio</div>
+        <div class="price-name">Mantenimiento</div>
+        <div class="price-amount">30–50€</div>
+        <div class="price-note">Limpieza y optimización</div>
+      </div>
+      <div class="price-card fade-in">
+        <div class="price-category">Servicio</div>
+        <div class="price-name">Montaje PC</div>
+        <div class="price-amount">50–100€</div>
+        <div class="price-note">Ensamblaje completo</div>
+      </div>
+      <div class="price-card fade-in">
+        <div class="price-category">Accesorios</div>
+        <div class="price-name">Periféricos</div>
+        <div class="price-amount">3–40€</div>
+        <div class="price-note">Cables, ratones, teclados</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVERSIÓN -->
+<section id="inversion">
+  <div class="container">
+    <div class="section-label">Financiero</div>
+    <h2 class="section-title">Inversión Inicial</h2>
+    <p class="section-desc">Estimación de costes de puesta en marcha del negocio.</p>
+
+    <div class="invest-grid">
+      <div class="invest-card fade-in">
+        <div class="invest-icon">🪑</div>
+        <div class="invest-label">Mobiliario del local</div>
+        <div class="invest-amount">1.500 – 3.000 €</div>
+      </div>
+      <div class="invest-card fade-in">
+        <div class="invest-icon">💻</div>
+        <div class="invest-label">Equipos informáticos</div>
+        <div class="invest-amount">1.500 – 3.500 €</div>
+      </div>
+      <div class="invest-card fade-in">
+        <div class="invest-icon">🔩</div>
+        <div class="invest-label">Herramientas técnicas</div>
+        <div class="invest-amount">500 – 1.200 €</div>
+      </div>
+      <div class="invest-card fade-in">
+        <div class="invest-icon">📦</div>
+        <div class="invest-label">Stock inicial</div>
+        <div class="invest-amount">3.000 – 8.000 €</div>
+      </div>
+      <div class="invest-card fade-in">
+        <div class="invest-icon">🔒</div>
+        <div class="invest-label">Seguridad</div>
+        <div class="invest-amount">500 – 1.500 €</div>
+      </div>
+      <div class="invest-card fade-in">
+        <div class="invest-icon">💾</div>
+        <div class="invest-label">Software y licencias</div>
+        <div class="invest-amount">300 – 1.000 €/año</div>
+      </div>
+    </div>
+
+    <div class="total-bar fade-in">
+      <div>
+        <div class="total-label">Inversión Total Estimada</div>
+        <div style="font-size:0.85rem; color:var(--muted); margin-top:4px;">Sin vehículo · costes de puesta en marcha</div>
+      </div>
+      <div class="total-amount">7.300 – 18.200 €</div>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN DE ACCIÓN -->
+<section id="plan" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-label">Ejecución</div>
+    <h2 class="section-title">Plan de Acción</h2>
+    <p class="section-desc">Cronograma de puesta en marcha del negocio desde la planificación hasta el inicio de la actividad.</p>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 60px;" class="plan-cols">
+      <div class="timeline">
+        <div class="timeline-item fade-in">
+          <div class="timeline-phase">Fase 1</div>
+          <div class="timeline-title">Plan de negocio final</div>
+          <div class="timeline-desc">Revisión y cierre del plan de empresa. Definición de estrategia comercial y modelo financiero.</div>
+          <span class="timeline-duration">1 semana</span>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-phase">Fase 2</div>
+          <div class="timeline-title">Financiación</div>
+          <div class="timeline-desc">Búsqueda de financiación, solicitud de ayudas al autoempleo en Extremadura y gestión de capital inicial.</div>
+          <span class="timeline-duration">2–4 semanas</span>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-phase">Fase 3</div>
+          <div class="timeline-title">Legalización</div>
+          <div class="timeline-desc">Alta como autónomo, modelo 036/037 en Hacienda, IAE, licencia de apertura del local y seguridad social.</div>
+          <span class="timeline-duration">2–3 semanas</span>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item fade-in">
+          <div class="timeline-phase">Fase 4</div>
+          <div class="timeline-title">Local e Instalaciones</div>
+          <div class="timeline-desc">Alquiler y acondicionamiento del local de 50–100 m². Instalación de taller, zona de atención y almacén.</div>
+          <span class="timeline-duration">3–5 semanas</span>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-phase">Fase 5</div>
+          <div class="timeline-title">Marketing y Web</div>
+          <div class="timeline-desc">Creación de identidad corporativa, redes sociales, página web, Google Business y promociones de lanzamiento.</div>
+          <span class="timeline-duration">2–4 semanas</span>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-phase">Fase 6</div>
+          <div class="timeline-title">🚀 Inicio de Actividad</div>
+          <div class="timeline-desc">Apertura del negocio, primer stock adquirido y actividad comercial y técnica en pleno funcionamiento.</div>
+          <span class="timeline-duration">Semana 8–10</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACTORES CLAVE -->
+<section id="claves">
+  <div class="container">
+    <div class="section-label">Éxito</div>
+    <h2 class="section-title">Factores Clave</h2>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:16px;">
+      <div class="service-card fade-in" style="text-align:center;">
+        <div style="font-size:2rem; margin-bottom:12px;">⚡</div>
+        <div class="service-title">Rapidez</div>
+        <div class="service-desc">Reparaciones y montajes en tiempos mínimos sin sacrificar calidad</div>
+      </div>
+      <div class="service-card fade-in" style="text-align:center;">
+        <div style="font-size:2rem; margin-bottom:12px;">🤝</div>
+        <div class="service-title">Atención Personalizada</div>
+        <div class="service-desc">Trato directo, cercano y adaptado a cada tipo de cliente</div>
+      </div>
+      <div class="service-card fade-in" style="text-align:center;">
+        <div style="font-size:2rem; margin-bottom:12px;">💰</div>
+        <div class="service-title">Precios Competitivos</div>
+        <div class="service-desc">Equilibrio entre calidad, servicio y precio justo</div>
+      </div>
+      <div class="service-card fade-in" style="text-align:center;">
+        <div style="font-size:2rem; margin-bottom:12px;">📱</div>
+        <div class="service-title">Presencia Online</div>
+        <div class="service-desc">Redes sociales, web y Google Business activos</div>
+      </div>
+      <div class="service-card fade-in" style="text-align:center;">
+        <div style="font-size:2rem; margin-bottom:12px;">🔄</div>
+        <div class="service-title">Adaptación Tecnológica</div>
+        <div class="service-desc">Actualización constante ante la evolución del hardware</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Click<span>PC</span></div>
+  <div class="footer-info">
+    José Manuel Romero Sánchez · Villanueva de la Serena, Badajoz<br>
+    Plan de Empresa #161929 · Extremadura Empresarial · Junta de Extremadura
+  </div>
+  <div class="footer-tags">
+    <span class="tag">CNAE 4741</span>
+    <span class="tag">Informática</span>
+    <span class="tag">Servicio Técnico</span>
+    <span class="tag">Badajoz</span>
+    <span class="tag">Emprendimiento</span>
+    <span class="tag">Extremadura</span>
+  </div>
+</footer>
+
+<style>
+  @media (max-width: 768px) {
+    .plan-cols { grid-template-columns: 1fr !important; }
+  }
+</style>
+
+<script>
+  // Intersection Observer for fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, (entry.target.dataset.delay || 0) * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach((el, i) => {
+    el.dataset.delay = i % 4;
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
