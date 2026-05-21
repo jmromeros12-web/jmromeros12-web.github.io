@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de tareas</title>
+    <link rel="stylesheet" href="todo_app.css">
+    
+    <script type="module" src="todo_app.js"></script>
+
+    <link rel="stylesheet" href="todo_app.css" />
+    <link href="https://unpkg.com/tabler-icons@latest/iconfont/tabler-icons.min.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <h2 class="sr-only">Aplicación de lista de tareas con categorías, prioridades y filtros</h2>
+
+    <div class="app">
+      <div class="header">
+        <h1>Mis tareas</h1>
+        <p id="date-label"></p>
+      </div>
+
+      <div class="input-row">
+        <input type="text" id="task-input" placeholder="Añadir nueva tarea..." />
+
+        <select id="cat-select">
+          <option value="work">💼 Trabajo</option>
+          <option value="personal" selected>🧠 Personal</option>
+          <option value="health">🩿 Salud</option>
+          <option value="other">📌 Otro</option>
+        </select>
+
+        <select id="prio-select">
+          <option value="alta">Alta</option>
+          <option value="media" selected>Media</option>
+          <option value="baja">Baja</option>
+        </select>
+
+        <button class="add-btn" id="add-btn">
+          <i class="ti ti-plus" aria-hidden="true"></i> Añadir
+        </button>
+      </div>
+
+      <div class="filters" id="filters-container">
+        <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="pending">Pendientes</button>
+        <button class="filter-btn" data-filter="done">Completadas</button>
+        <button class="filter-btn" data-filter="work">💼 Trabajo</button>
+        <button class="filter-btn" data-filter="personal">🧠 Personal</button>
+        <button class="filter-btn" data-filter="health">🩿 Salud</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-n" id="s-total">0</div>
+          <div class="stat-l">Total</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n" id="s-pending">0</div>
+          <div class="stat-l">Pendientes</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n" id="s-done">0</div>
+          <div class="stat-l">Completadas</div>
+        </div>
+      </div>
+
+      <div class="tasks" id="tasks-list"></div>
+    </div>
+  </body>
+</html>
