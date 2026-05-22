@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicios JavaScript</title>
+</head>
+<body>
+
+<h1>Ejercicios de JavaScript</h1>
+<p>Abre la consola (F12) para ver los resultados.</p>
+
+<script>
+
+    // 1. TIPOS DE SALIDA EN JAVASCRIPT
+
+    /*
+    En JavaScript existen diferentes formas de mostrar información:
+    - console.log(): muestra mensajes en la consola
+    - alert(): muestra una ventana emergente
+    - document.write(): escribe directamente en el HTML
+    */
+
+    // Ejemplo:
+    console.log("Salida por consola");
+    alert("Salida con alert");
+    document.write("<p>Salida en el documento HTML</p>");
+
+
+    // 2. VARIABLES
+
+    /*
+    Las variables se utilizan para almacenar datos.
+    Se pueden declarar con:
+    - var (antiguo)
+    - let (recomendado)
+    - const (constante, no cambia)
+    */
+
+    // Ejemplo:
+    let nombre = "Carlos";
+    const edad = 25;
+
+    console.log("Nombre:", nombre);
+    console.log("Edad:", edad);
+
+
+    // 3. FUNCIONES BÁSICAS
+
+    /*
+    Una función es un bloque de código reutilizable.
+    Se define con la palabra clave 'function'
+    */
+
+    // Ejemplo:
+    function saludar() {
+    console.log("Hola, bienvenido!");
+    }
+
+    saludar();
+
+
+    // 4. FUNCIONES CON PARÁMETROS Y ARGUMENTOS
+
+    /*
+    - Parámetros: variables definidas en la función
+    - Argumentos: valores que se envían al llamar la función
+    */
+
+    // Ejemplo:
+    function saludarPersona(nombre) { // parámetro
+    console.log("Hola " + nombre);
+    }
+
+    saludarPersona("Ana"); // argumento
+
+
+    // 5. FUNCIONES CON RETURN
+
+    /*
+    Las funciones pueden devolver un valor usando 'return'.
+    Esto permite reutilizar el resultado.
+    */
+
+    // Ejemplo:
+    function sumar(a, b) {
+    return a + b;
+    }
+
+    let resultado = sumar(5, 3);
+    console.log("Resultado de la suma:", resultado);
+
+
+    // 6. FUNCIONES ANÓNIMAS
+
+    /*
+    Una función anónima es una función sin nombre.
+    Se suele guardar en una variable o usar directamente.
+    */
+
+    // Ejemplo:
+    let multiplicar = function(a, b) {
+    return a * b;
+    };
+
+    console.log("Multiplicación:", multiplicar(4, 2));
+
+
+    // 7. FUNCIONES AUTOINVOCADAS (IIFE)
+
+    /*
+    Una función autoinvocada se ejecuta automáticamente
+    sin necesidad de llamarla explícitamente.
+    Se encierra entre paréntesis.
+    */
+
+    // Ejemplo:
+    (function() {
+    console.log("Función autoinvocada ejecutada");
+    })();
+
+
+    // 8. FUNCIÓN FLECHA (ARROW FUNCTION)
+
+    /*
+    Las funciones flecha son una forma moderna y más corta
+    de escribir funciones.
+    */
+
+    // Ejemplo:
+    const restar = (a, b) => {
+    return a - b;
+    };
+
+    console.log("Resta:", restar(10, 4));
+
+
+    // 9. EJERCICIO COMPLETO COMBINADO
+
+    /*
+    Este ejercicio combina varios conceptos:
+    - Variables
+    - Función con parámetros
+    - Uso de return
+    */
+
+    // Ejemplo:
+    function calcularAreaRectangulo(base, altura) {
+    return base * altura;
+    }
+
+    let area = calcularAreaRectangulo(5, 10);
+    console.log("Área del rectángulo:", area);
+
+
+</script>
+
+</body>
+</html>
