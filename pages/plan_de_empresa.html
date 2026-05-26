@@ -1353,5 +1353,186 @@
     observer.observe(el);
   });
 </script>
+<!-- POLÍTICA MODAL -->
+<div id="policy-overlay" style="
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(5, 8, 14, 0.92);
+  backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+">
+  <div style="
+    background: #131b28;
+    border: 1px solid #1e2d45;
+    border-radius: 24px;
+    max-width: 640px;
+    width: 100%;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+  ">
+    <!-- Header -->
+    <div style="
+      padding: 32px 36px 24px;
+      border-bottom: 1px solid #1e2d45;
+      flex-shrink: 0;
+    ">
+      <div style="
+        display: inline-flex; align-items: center; gap: 8px;
+        background: rgba(0,212,170,0.1);
+        border: 1px solid rgba(0,212,170,0.3);
+        border-radius: 100px;
+        padding: 5px 14px;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #00d4aa;
+        margin-bottom: 16px;
+      ">
+        <span style="width:6px;height:6px;border-radius:50%;background:#00d4aa;display:inline-block;"></span>
+        Documento confidencial
+      </div>
+      <h2 style="
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: 1.5rem;
+        color: #ffffff;
+        margin-bottom: 6px;
+      ">Política de Uso y Confidencialidad</h2>
+      <p style="font-size: 0.85rem; color: #6b7fa3;">ClickPC · Plan de Empresa · José Manuel Romero Sánchez</p>
+    </div>
+
+    <!-- Contenido con scroll -->
+    <div style="
+      padding: 28px 36px;
+      overflow-y: auto;
+      flex: 1;
+      font-size: 0.88rem;
+      color: #a8b8d0;
+      line-height: 1.75;
+    ">
+      <p style="margin-bottom: 20px;">
+        El presente documento contiene información confidencial y de uso exclusivo interno, elaborada en el marco del programa <strong style="color:#e8edf5;">Extremadura Empresarial</strong> de la Junta de Extremadura (expediente #161929).
+      </p>
+
+      <h3 style="font-family:'Syne',sans-serif; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.1em; color:#00d4aa; margin-bottom:10px;">1. Confidencialidad</h3>
+      <p style="margin-bottom: 20px;">
+        Toda la información contenida en este plan de empresa — incluyendo datos financieros, estrategia comercial, análisis de mercado y proyecciones — es estrictamente confidencial. Su divulgación, reproducción o distribución a terceros sin autorización expresa del titular queda expresamente prohibida.
+      </p>
+
+      <h3 style="font-family:'Syne',sans-serif; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.1em; color:#00d4aa; margin-bottom:10px;">2. Uso permitido</h3>
+      <p style="margin-bottom: 20px;">
+        El acceso a este documento está autorizado únicamente para evaluadores, tutores y personal del programa Extremadura Empresarial, así como para el propio titular del proyecto. Cualquier otro uso deberá ser autorizado por escrito.
+      </p>
+
+      <h3 style="font-family:'Syne',sans-serif; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.1em; color:#00d4aa; margin-bottom:10px;">3. Propiedad intelectual</h3>
+      <p style="margin-bottom: 20px;">
+        El contenido, estructura, diseño y datos de este plan son propiedad intelectual de <strong style="color:#e8edf5;">José Manuel Romero Sánchez</strong>. Queda prohibida su copia parcial o total sin consentimiento previo.
+      </p>
+
+      <h3 style="font-family:'Syne',sans-serif; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.1em; color:#00d4aa; margin-bottom:10px;">4. Responsabilidad</h3>
+      <p style="margin-bottom: 20px;">
+        Las proyecciones económicas y estimaciones incluidas en este documento son orientativas y están sujetas a variaciones según las condiciones del mercado. El titular no asume responsabilidad por decisiones tomadas con base exclusiva en este documento por parte de terceros.
+      </p>
+
+      <h3 style="font-family:'Syne',sans-serif; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.1em; color:#00d4aa; margin-bottom:10px;">5. Protección de datos</h3>
+      <p>
+        Los datos personales incluidos en este plan se tratan conforme al <strong style="color:#e8edf5;">Reglamento (UE) 2016/679 (RGPD)</strong> y a la Ley Orgánica 3/2018 de Protección de Datos. Al acceder a este documento, el usuario declara conocer y aceptar estas condiciones.
+      </p>
+    </div>
+
+    <!-- Botones -->
+    <div style="
+      padding: 24px 36px;
+      border-top: 1px solid #1e2d45;
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      flex-shrink: 0;
+    ">
+      <button onclick="rejectPolicy()" style="
+        padding: 12px 28px;
+        border-radius: 10px;
+        border: 1px solid #1e2d45;
+        background: transparent;
+        color: #6b7fa3;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.88rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+      " onmouseover="this.style.borderColor='#ff6b35';this.style.color='#ff6b35';"
+         onmouseout="this.style.borderColor='#1e2d45';this.style.color='#6b7fa3';">
+        Rechazar
+      </button>
+      <button onclick="acceptPolicy()" style="
+        padding: 12px 28px;
+        border-radius: 10px;
+        border: none;
+        background: linear-gradient(135deg, #00d4aa, #0090ff);
+        color: #ffffff;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.88rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: opacity 0.2s;
+        box-shadow: 0 4px 20px rgba(0,212,170,0.3);
+      " onmouseover="this.style.opacity='0.85';"
+         onmouseout="this.style.opacity='1';">
+        Aceptar y continuar
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- PANTALLA DE RECHAZO -->
+<div id="reject-screen" style="
+  display: none;
+  position: fixed; inset: 0; z-index: 9999;
+  background: #0a0e14;
+  align-items: center; justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 40px;
+">
+  <div style="font-size:3rem; margin-bottom:24px;">🔒</div>
+  <h2 style="
+    font-family:'Syne',sans-serif; font-weight:800; font-size:1.8rem;
+    color:#ffffff; margin-bottom:12px;
+  ">Acceso denegado</h2>
+  <p style="color:#6b7fa3; max-width:400px; font-size:0.95rem; line-height:1.6;">
+    Has rechazado la política de uso. El contenido de este plan de empresa es confidencial y no puede ser visualizado sin aceptar las condiciones.
+  </p>
+  <button onclick="showPolicy()" style="
+    margin-top:32px; padding:12px 28px;
+    border-radius:10px; border:1px solid #1e2d45;
+    background:transparent; color:#6b7fa3;
+    font-family:'DM Sans',sans-serif; font-size:0.88rem;
+    cursor:pointer;
+  " onmouseover="this.style.borderColor='#00d4aa';this.style.color='#00d4aa';"
+     onmouseout="this.style.borderColor='#1e2d45';this.style.color='#6b7fa3';">
+    ← Volver a la política
+  </button>
+</div>
+
+<script>
+  document.body.style.overflow = 'hidden';
+
+  function acceptPolicy() {
+    document.getElementById('policy-overlay').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  function rejectPolicy() {
+    document.getElementById('policy-overlay').style.display = 'none';
+    const r = document.getElementById('reject-screen');
+    r.style.display = 'flex';
+  }
+  function showPolicy() {
+    document.getElementById('reject-screen').style.display = 'none';
+    document.getElementById('policy-overlay').style.display = 'flex';
+  }
+</script>
 </body>
 </html>
