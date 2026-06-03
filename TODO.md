@@ -1,7 +1,3 @@
-- [x] Editar `pages/formulario.html` para añadir botón “Guardar”.
-- [x] Asegurar que todos los campos necesarios tienen atributo `name` para poder leerlos en JS.
-- [x] Implementar lógica JS para guardar el contenido del formulario en `localStorage`.
-- [x] Mostrar confirmación al usuario al guardar.
-- [ ] Probar en navegador: guardar varias veces y verificar que `localStorage` se actualiza.
-
-
+- [x] Quitar la barra "navegador principal" (main-navigation) sticky para que no se quede fija al bajar.
+- [ ] Ajustar márgenes del contenido si hace falta para que no quede solapado.
+- [ ] Probar en navegador (index.html) desplazando la página y confirmando el comportamiento.

@@ -139,8 +139,9 @@
         .main-navigation {
             background: var(--black-nav);
             box-shadow: 0 2px 12px rgba(255, 107, 0, 0.3);
-            position: sticky;
-            top: 0;
+            /* Para que la barra no se quede fija al hacer scroll */
+            position: relative;
+            top: auto;
             z-index: 100;
             border-bottom: 2px solid var(--orange-dark);
         }
